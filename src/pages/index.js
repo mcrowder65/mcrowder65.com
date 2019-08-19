@@ -1,53 +1,55 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import { rhythm } from "../utils/typography";
 
 class BlogIndex extends React.Component {
   render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
-
+    const { data } = this.props;
+    const siteTitle = data.site.siteMetadata.title;
+    const posts = data.allDevArticles.edges;
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
         <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
+        {posts.map(({ node: { article } }) => {
+          const { title, slug } = article;
           return (
-            <article key={node.fields.slug}>
+            <article key={article.title}>
               <header>
                 <h3
                   style={{
                     marginBottom: rhythm(1 / 4),
                   }}
                 >
-                  <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                  <a
+                    style={{ boxShadow: `none` }}
+                    href={`https://dev.to/mcrowder65/${slug}`}
+                  >
                     {title}
-                  </Link>
+                  </a>
                 </h3>
-                <small>{node.frontmatter.date}</small>
+                {/*<small>{node.frontmatter.date}</small>*/}
               </header>
               <section>
                 <p
                   dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
+                    __html: article.description,
                   }}
                 />
               </section>
             </article>
-          )
+          );
         })}
       </Layout>
-    )
+    );
   }
 }
 
-export default BlogIndex
+export default BlogIndex;
 
 export const pageQuery = graphql`
   query {
@@ -56,20 +58,18 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allDevArticles {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+          article {
+            id
             title
             description
+            body_markdown
+            slug
           }
         }
       }
     }
   }
-`
+`;

@@ -1,14 +1,21 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Matt Crowder's blog`,
+    author: `Matt Crowder`,
+    description: `Matt Crowder is awesome!`,
+    siteUrl: `https://mcrowder65.com`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `mcrowder65`,
     },
   },
   plugins: [
+    {
+      resolve: "gatsby-source-dev",
+      options: {
+        // This is your username on Dev.to
+        username: "mcrowder65",
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -63,7 +70,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/favicon.png`,
       },
     },
     `gatsby-plugin-offline`,
@@ -75,4 +82,4 @@ module.exports = {
       },
     },
   ],
-}
+};
