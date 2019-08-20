@@ -1,75 +1,82 @@
 import React from "react";
-import { graphql } from "gatsby";
-
-import Bio from "../components/bio";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import { rhythm } from "../utils/typography";
-
-class BlogIndex extends React.Component {
-  render() {
-    const { data } = this.props;
-    const siteTitle = data.site.siteMetadata.title;
-    const posts = data.allDevArticles.edges;
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
-        <Bio />
-        {posts.map(({ node: { article } }) => {
-          const { title, slug } = article;
-          return (
-            <article key={article.title}>
-              <header>
-                <h3
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                >
-                  <a
-                    style={{ boxShadow: `none` }}
-                    href={`https://dev.to/mcrowder65/${slug}`}
-                  >
-                    {title}
-                  </a>
-                </h3>
-                {/*<small>{node.frontmatter.date}</small>*/}
-              </header>
-              <section>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: article.description,
-                  }}
-                />
-              </section>
-            </article>
-          );
-        })}
-      </Layout>
-    );
-  }
-}
-
-export default BlogIndex;
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allDevArticles {
-      edges {
-        node {
-          article {
-            id
-            title
-            description
-            body_markdown
-            slug
-          }
-        }
-      }
-    }
+import PropTypes from "prop-types";
+import { default as styled, ThemeProvider } from "styled-components";
+import { theme as initialTheme } from "../styles/theme";
+import { useObjectState } from "mooks";
+const TabLink = styled.button`
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+  &:hover {
+    background-color: #777;
   }
 `;
+
+const TabContent = styled.div`
+  display: ${props => (props.shouldDisplay === true ? "block" : "none")}
+  background-color: ${({ theme }) => theme.main}
+  padding: 50px;
+  text-align: center;
+`;
+
+TabContent.propTypes = {
+  shouldDisplay: PropTypes.bool,
+};
+TabContent.defaultProps = {
+  shouldDisplay: false,
+};
+
+const CITIES = {
+  London: "London",
+  Paris: "Paris",
+  Tokyo: "Tokyo",
+  Oslo: "Oslo",
+};
+function Index() {
+  const [city, setCity] = React.useState(CITIES.London);
+  const [theme, setTheme] = useObjectState(initialTheme);
+  const onClick = (c, color) => () => {
+    setCity(c);
+    setTheme({ main: color });
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <React.Fragment>
+        <TabContent shouldDisplay={city === CITIES.London}>
+          <h1>London</h1>
+          <p>London is the capital city of England.</p>
+        </TabContent>
+
+        <TabContent shouldDisplay={city === CITIES.Paris}>
+          <h1>Paris</h1>
+          <p>Paris is the capital of France.</p>
+        </TabContent>
+
+        <TabContent shouldDisplay={city === CITIES.Tokyo}>
+          <h1>Tokyo</h1>
+          <p>Tokyo is the capital of Japan.</p>
+        </TabContent>
+
+        <TabContent shouldDisplay={city === CITIES.Oslo}>
+          <h1>Oslo</h1>
+          <p>Oslo is the capital of Norway.</p>
+        </TabContent>
+        <TabLink onClick={onClick(CITIES.London, initialTheme.main)}>
+          London
+        </TabLink>
+        <TabLink onClick={onClick(CITIES.Paris, "blue")}>Paris</TabLink>
+        <TabLink onClick={onClick(CITIES.Tokyo, "purple")}>Tokyo</TabLink>
+        <TabLink onClick={onClick(CITIES.Oslo, "orange")}>Oslo</TabLink>
+      </React.Fragment>
+    </ThemeProvider>
+  );
+}
+
+export default Index;
