@@ -10,9 +10,10 @@ class Index extends React.Component {
     const { data } = this.props;
     const siteTitle = data.site.siteMetadata.title;
     const posts = data.allDevArticles.edges;
+
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
+        <SEO title="Blog" />
         <Bio />
         {posts.map(({ node: { article } }) => {
           const { title, slug } = article;
@@ -31,7 +32,6 @@ class Index extends React.Component {
                     {title}
                   </a>
                 </h3>
-                {/*<small>{node.frontmatter.date}</small>*/}
               </header>
               <section>
                 <p

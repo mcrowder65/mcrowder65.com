@@ -3,6 +3,7 @@ import headshot from "../../content/assets/headshot.png";
 import Layout from "../components/layout";
 import { graphql } from "gatsby";
 import styled from "styled-components";
+import SEO from "../components/seo";
 const Container = styled.div`
   margin-top: 25px;
   display: flex;
@@ -20,6 +21,7 @@ const Headshot = ({ location, data }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <SEO title="Headshot" />
       <Container>
         <img
           src={headshot}
