@@ -19,9 +19,9 @@ export const Router = () => {
       <Route to="/talks/" activeStyle={{ color: "purple" }}>
         Talks
       </Route>
-      <Route to="/headshot/" activeStyle={{ color: "purple" }}>
-        Headshot
-      </Route>
+      {/*<Route to="/headshot/" activeStyle={{ color: "purple" }}>*/}
+      {/*  Headshot*/}
+      {/*</Route>*/}
     </Routes>
   );
 };
