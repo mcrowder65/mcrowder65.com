@@ -1,45 +1,42 @@
 import React from "react";
-import { Link } from "gatsby";
 import { Router } from "./router";
-import { rhythm, scale } from "../utils/typography";
+import { rhythm } from "../utils/typography";
+import { GitHub, Twitter } from "./social";
+import styled from "styled-components";
+import { Typography } from "@material-ui/core";
 
+const Container = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  max-width: ${rhythm(24)};
+  padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
+`;
+const Header = styled.header`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+const Icons = styled.div`
+  margin-top: 10px;
+`;
 function Layout(props) {
   const { title, children } = props;
-  const header = (
-    <h1
-      style={{
-        ...scale(1.5),
-        marginBottom: rhythm(1.5),
-        marginTop: 0,
-      }}
-    >
-      <Link
-        style={{
-          boxShadow: `none`,
-          textDecoration: `none`,
-          color: `inherit`,
-        }}
-        to={`/`}
-      >
-        {title}
-      </Link>
-    </h1>
-  );
+
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      <header>{header}</header>
+    <Container>
+      <Header>
+        <Typography variant="h3">{title}</Typography>
+        <Icons>
+          <Twitter />
+          <GitHub />
+        </Icons>
+      </Header>
       <main>
         <Router />
         {children}
       </main>
-    </div>
+    </Container>
   );
 }
 
