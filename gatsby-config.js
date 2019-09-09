@@ -23,6 +23,7 @@ module.exports = {
         name: `talks`,
       },
     },
+    `gatsby-plugin-material-ui`,
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
