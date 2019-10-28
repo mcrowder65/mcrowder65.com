@@ -1,6 +1,18 @@
 ---
 title: Intro to GraphQL and how to architect a JavaScript GraphQL application end to end
-presentations: [{date: "04/02/2019", source: "https://www.youtube.com/watch?v=cYZ25-3RuaM", title: "RVA.js Meetup"}, {date: "06/14/2019", source: "https://www.youtube.com/watch?v=BYdE3H381wk", title: "DevFest DC 2019"}]
+presentations:
+  [
+    {
+      date: "04/02/2019",
+      source: "https://www.youtube.com/watch?v=cYZ25-3RuaM",
+      title: "RVA.js Meetup",
+    },
+    {
+      date: "06/14/2019",
+      source: "https://www.youtube.com/watch?v=BYdE3H381wk",
+      title: "DevFest DC 2019",
+    },
+  ]
 ---
 
 Learn what, where, how, and why to use GraphQL, then learn practical advice on how to architect an application using the Apollo GraphQL library for React, Angular, or Vue.

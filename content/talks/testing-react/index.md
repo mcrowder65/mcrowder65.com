@@ -1,8 +1,29 @@
 ---
 title: Testing React
-presentations: [{date: "09/21/2019", title: "React Boston Conference", source: "https://www.reactboston.com/schedule" }, {date: "10/04/2019", title: "Scenic City Summit Conference", source: "https://sceniccitysummit.com/speaker/matt-crowder/"}, {date: "11/16/2019", title: "RVA.js Conference", source: "https://www.rvajavascript.com/speakers"}]
+presentations:
+  [
+    {
+      date: "09/21/2019",
+      title: "React Boston Conference",
+      source: "https://www.reactboston.com/schedule",
+    },
+    {
+      date: "10/04/2019",
+      title: "Scenic City Summit Conference",
+      source: "https://sceniccitysummit.com/speaker/matt-crowder/",
+    },
+    {
+      date: "11/16/2019",
+      title: "RVA.js Conference",
+      source: "https://www.rvajavascript.com/speakers",
+    },
+    {
+      date: "12/06/2019",
+      title: "NationJS Front Runners",
+      source: "http://nationjs.com",
+    },
+  ]
 ---
-
 
 If you had to rewrite your tests when writing a hook in your React application, then you’re writing tests wrong.
 
