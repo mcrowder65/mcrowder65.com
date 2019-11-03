@@ -5,7 +5,7 @@ presentations:
     {
       date: "09/21/2019",
       title: "React Boston Conference",
-      source: "https://www.reactboston.com/schedule",
+      source: "https://www.youtube.com/watch?v=BUXJIg2Wve4",
     },
     {
       date: "10/04/2019",
@@ -13,7 +13,7 @@ presentations:
       source: "https://sceniccitysummit.com/speaker/matt-crowder/",
     },
     {
-      date: "11/16/2019",
+      date: "11/15/2019",
       title: "RVA.js Conference",
       source: "https://www.rvajavascript.com/speakers",
     },
