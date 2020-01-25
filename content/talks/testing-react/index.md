@@ -20,7 +20,7 @@ presentations:
     {
       date: "12/06/2019",
       title: "NationJS Front Runners",
-      source: "http://nationjs.com",
+      source: "https://youtu.be/dBqKbOxg1mo",
     },
   ]
 ---
